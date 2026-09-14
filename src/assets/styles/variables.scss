@@ -1,0 +1,53 @@
+// ========== 颜色变量 ==========
+$color-primary: #4f8cff;
+$color-secondary: #a855f7;
+$color-accent: #06d6a0;
+$color-warning: #ffb703;
+$color-danger: #ef476f;
+$color-info: #00b4d8;
+
+// 渐变色
+$gradient-primary: linear-gradient(135deg, #4f8cff 0%, #a855f7 100%);
+$gradient-accent: linear-gradient(135deg, #06d6a0 0%, #00b4d8 100%);
+$gradient-warning: linear-gradient(135deg, #ffb703 0%, #fb8500 100%);
+$gradient-danger: linear-gradient(135deg, #ef476f 0%, #ff6b6b 100%);
+
+// 背景色
+$bg-dark: #0a0e27;
+$bg-card: rgba(15, 23, 58, 0.8);
+$bg-card-hover: rgba(20, 30, 70, 0.95);
+
+// 文字色
+$text-primary: #ffffff;
+$text-secondary: rgba(255, 255, 255, 0.7);
+$text-tertiary: rgba(255, 255, 255, 0.45);
+
+// 边框色
+$border-color: rgba(79, 140, 255, 0.3);
+$border-glow: rgba(79, 140, 255, 0.6);
+
+// ========== 尺寸变量 ==========
+$screen-width: 3840px;
+$screen-height: 2160px;
+$card-radius: 8px;
+$card-padding: 24px;
+
+// ========== 字体变量 ==========
+$font-family: 'Microsoft YaHei', 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+$font-size-xs: 14px;
+$font-size-sm: 16px;
+$font-size-base: 18px;
+$font-size-lg: 24px;
+$font-size-xl: 32px;
+$font-size-2xl: 48px;
+$font-size-3xl: 72px;
+
+// ========== 动效变量 ==========
+$transition-fast: 0.2s ease;
+$transition-base: 0.3s ease;
+$transition-slow: 0.5s ease;
+
+// ========== 阴影变量 ==========
+$shadow-card: 0 4px 20px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+$shadow-glow: 0 0 20px rgba(79, 140, 255, 0.4), 0 0 40px rgba(168, 85, 247, 0.2);
+$shadow-glow-hover: 0 0 30px rgba(79, 140, 255, 0.6), 0 0 60px rgba(168, 85, 247, 0.3);

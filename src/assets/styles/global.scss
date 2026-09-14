@@ -1,0 +1,551 @@
+@use './variables.scss' as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: $bg-dark;
+  font-family: $font-family;
+  color: $text-primary;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+}
+
+// 滚动条样式
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(79, 140, 255, 0.5);
+  border-radius: 3px;
+
+  &:hover {
+    background: rgba(79, 140, 255, 0.8);
+  }
+}
+
+// 通用工具类
+.text-gradient {
+  background: $gradient-primary;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-glow {
+  text-shadow: 0 0 10px rgba(79, 140, 255, 0.8), 0 0 20px rgba(79, 140, 255, 0.4);
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// 入场动画
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(79, 140, 255, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(79, 140, 255, 0.8), 0 0 50px rgba(168, 85, 247, 0.3);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+.animate-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.animate-breathe {
+  animation: breathe 3s ease-in-out infinite;
+}
+
+// ========== Element Plus 深色主题覆盖 ==========
+.el-card {
+  background: rgba(15, 23, 58, 0.6) !important;
+  border: 1px solid rgba(79, 140, 255, 0.15) !important;
+  border-radius: 8px !important;
+  color: rgba(255, 255, 255, 0.85);
+
+  .el-card__header {
+    border-bottom: 1px solid rgba(79, 140, 255, 0.1) !important;
+    padding: 14px 20px;
+  }
+
+  .el-card__body {
+    padding: 20px;
+  }
+}
+
+.el-table {
+  --el-table-bg-color: transparent !important;
+  --el-table-tr-bg-color: transparent !important;
+  --el-table-header-bg-color: rgba(79, 140, 255, 0.12) !important;
+  --el-table-text-color: rgba(255, 255, 255, 0.85) !important;
+  --el-table-header-text-color: rgba(255, 255, 255, 0.95) !important;
+  --el-table-border-color: rgba(79, 140, 255, 0.15) !important;
+  --el-table-row-hover-bg-color: rgba(79, 140, 255, 0.1) !important;
+  --el-table-stripe-bg-color: rgba(255, 255, 255, 0.03) !important;
+
+  th.el-table__cell {
+    background: rgba(79, 140, 255, 0.12) !important;
+    color: rgba(255, 255, 255, 0.95) !important;
+    font-weight: 600;
+  }
+
+  tr.el-table__row--striped td.el-table__cell {
+    background: rgba(255, 255, 255, 0.03) !important;
+  }
+
+  td.el-table__cell {
+    color: rgba(255, 255, 255, 0.85) !important;
+  }
+
+  .el-table__empty-text {
+    color: rgba(255, 255, 255, 0.4);
+  }
+}
+
+.el-input__wrapper {
+  background: rgba(255, 255, 255, 0.05) !important;
+  box-shadow: 0 0 0 1px rgba(79, 140, 255, 0.2) inset !important;
+  border-radius: 6px !important;
+
+  &:hover {
+    box-shadow: 0 0 0 1px rgba(79, 140, 255, 0.4) inset !important;
+  }
+
+  &.is-focus {
+    box-shadow: 0 0 0 1px #4f8cff inset, 0 0 8px rgba(79, 140, 255, 0.2) !important;
+  }
+}
+
+.el-input__inner {
+  color: rgba(255, 255, 255, 0.9) !important;
+
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.35) !important;
+  }
+}
+
+.el-input__prefix-inner,
+.el-input__suffix-inner {
+  color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.el-textarea__inner {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(79, 140, 255, 0.2) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  border-radius: 6px !important;
+
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.35) !important;
+  }
+
+  &:focus {
+    border-color: #4f8cff !important;
+  }
+}
+
+.el-select__wrapper {
+  background: rgba(255, 255, 255, 0.05) !important;
+  box-shadow: 0 0 0 1px rgba(79, 140, 255, 0.2) inset !important;
+  border-radius: 6px !important;
+
+  &:hover {
+    box-shadow: 0 0 0 1px rgba(79, 140, 255, 0.4) inset !important;
+  }
+
+  &.is-focused {
+    box-shadow: 0 0 0 1px #4f8cff inset !important;
+  }
+}
+
+.el-select__placeholder {
+  color: rgba(255, 255, 255, 0.35) !important;
+}
+
+.el-select__selected-item {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.el-select__popper,
+.el-select-dropdown {
+  background: #0f173a !important;
+  border: 1px solid rgba(79, 140, 255, 0.2) !important;
+
+  .el-select-dropdown__item {
+    color: rgba(255, 255, 255, 0.8) !important;
+
+    &.is-selected {
+      color: #4f8cff !important;
+      font-weight: 600;
+    }
+
+    &:hover {
+      background: rgba(79, 140, 255, 0.15) !important;
+    }
+  }
+}
+
+.el-dialog {
+  background: #0f173a !important;
+  border: 1px solid rgba(79, 140, 255, 0.2) !important;
+  border-radius: 10px !important;
+
+  .el-dialog__title {
+    color: #fff !important;
+    font-weight: 600;
+  }
+
+  .el-dialog__headerbtn {
+    color: rgba(255, 255, 255, 0.6) !important;
+
+    &:hover {
+      color: #fff !important;
+    }
+  }
+
+  .el-dialog__body {
+    color: rgba(255, 255, 255, 0.85);
+  }
+}
+
+.el-overlay-dialog {
+  .el-overlay {
+    background: rgba(0, 0, 0, 0.6) !important;
+  }
+}
+
+.el-form-item__label {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+.el-pagination {
+  --el-pagination-bg-color: transparent !important;
+  --el-pagination-text-color: rgba(255, 255, 255, 0.7) !important;
+  --el-pagination-button-color: rgba(255, 255, 255, 0.7) !important;
+  --el-pagination-hover-color: #4f8cff !important;
+  --el-pagination-button-bg-color: rgba(255, 255, 255, 0.05) !important;
+  --el-pagination-button-disabled-bg-color: rgba(255, 255, 255, 0.03) !important;
+
+  .el-pager li {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-radius: 4px;
+    margin: 0 2px;
+
+    &.is-active {
+      background: #4f8cff !important;
+      color: #fff !important;
+    }
+  }
+
+  .btn-prev,
+  .btn-next {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-radius: 4px;
+  }
+}
+
+.el-dropdown-menu {
+  background: #0f173a !important;
+  border: 1px solid rgba(79, 140, 255, 0.2) !important;
+
+  .el-dropdown-menu__item {
+    color: rgba(255, 255, 255, 0.8) !important;
+
+    &:hover {
+      background: rgba(79, 140, 255, 0.15) !important;
+    }
+  }
+}
+
+.el-radio__label {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.el-radio__inner {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(79, 140, 255, 0.4) !important;
+}
+
+.el-radio__input.is-checked .el-radio__inner {
+  background: #4f8cff !important;
+  border-color: #4f8cff !important;
+}
+
+.el-checkbox__label {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.el-checkbox__inner {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(79, 140, 255, 0.4) !important;
+}
+
+.el-checkbox__input.is-checked .el-checkbox__inner {
+  background: #4f8cff !important;
+  border-color: #4f8cff !important;
+}
+
+.el-radio-button__inner {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(79, 140, 255, 0.2) !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+
+  &:hover {
+    color: #4f8cff !important;
+  }
+}
+
+.el-radio-button__original-radio:checked + .el-radio-button__inner {
+  background: #4f8cff !important;
+  border-color: #4f8cff !important;
+  color: #fff !important;
+  box-shadow: none !important;
+}
+
+.el-date-picker,
+.el-picker-panel {
+  background: #0f173a !important;
+  border: 1px solid rgba(79, 140, 255, 0.2) !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+
+  .el-date-picker__header-label,
+  .el-picker-panel__icon-btn {
+    color: rgba(255, 255, 255, 0.8) !important;
+  }
+
+  .el-date-table th {
+    color: rgba(255, 255, 255, 0.5) !important;
+    border-bottom: 1px solid rgba(79, 140, 255, 0.1) !important;
+  }
+
+  .el-date-table td .el-date-table-cell__text {
+    color: rgba(255, 255, 255, 0.7) !important;
+  }
+
+  .el-date-table td.today .el-date-table-cell__text {
+    color: #4f8cff !important;
+    font-weight: 600;
+  }
+
+  .el-date-table td.current:not(.disabled) .el-date-table-cell__text {
+    background: #4f8cff !important;
+    color: #fff !important;
+  }
+
+  .el-picker-panel__footer {
+    background: #0f173a !important;
+    border-top: 1px solid rgba(79, 140, 255, 0.1) !important;
+  }
+}
+
+.el-message-box {
+  background: #0f173a !important;
+  border: 1px solid rgba(79, 140, 255, 0.2) !important;
+
+  .el-message-box__title {
+    color: #fff !important;
+  }
+
+  .el-message-box__message {
+    color: rgba(255, 255, 255, 0.8) !important;
+  }
+}
+
+.el-descriptions {
+  --el-descriptions-table-border: rgba(79, 140, 255, 0.15) !important;
+  --el-descriptions-item-label-bg-color: rgba(79, 140, 255, 0.08) !important;
+  --el-descriptions-text-color: rgba(255, 255, 255, 0.85) !important;
+
+  .el-descriptions__label,
+  .el-descriptions__content {
+    color: rgba(255, 255, 255, 0.85) !important;
+  }
+}
+
+.el-timeline-item__content {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.el-timeline-item__timestamp {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.el-divider {
+  border-color: rgba(79, 140, 255, 0.1) !important;
+}
+
+.el-breadcrumb__inner {
+  color: rgba(255, 255, 255, 0.5) !important;
+
+  &.is-link {
+    &:hover {
+      color: #4f8cff !important;
+    }
+  }
+}
+
+.el-breadcrumb__separator {
+  color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.el-avatar {
+  background: linear-gradient(135deg, #4f8cff, #a855f7) !important;
+  color: #fff !important;
+}
+
+.el-badge__content {
+  border: none !important;
+}
+
+.el-switch.is-checked .el-switch__core {
+  background-color: #4f8cff !important;
+  border-color: #4f8cff !important;
+}
+
+.el-switch__core {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.el-input-number__decrease,
+.el-input-number__increase {
+  background: rgba(255, 255, 255, 0.05) !important;
+  color: rgba(255, 255, 255, 0.6) !important;
+  border-color: rgba(79, 140, 255, 0.2) !important;
+
+  &:hover {
+    color: #4f8cff !important;
+  }
+}
+
+.el-loading-mask {
+  background-color: rgba(10, 14, 39, 0.8) !important;
+}
+
+.el-loading-spinner .el-loading-text {
+  color: #4f8cff !important;
+}
+
+.el-loading-spinner .path {
+  stroke: #4f8cff !important;
+}
+
+.el-tooltip__popper {
+  background: #0f173a !important;
+  border: 1px solid rgba(79, 140, 255, 0.2) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.el-popover {
+  background: #0f173a !important;
+  border: 1px solid rgba(79, 140, 255, 0.2) !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.el-notification {
+  background: #0f173a !important;
+  border: 1px solid rgba(79, 140, 255, 0.2) !important;
+
+  .el-notification__title {
+    color: #fff !important;
+  }
+
+  .el-notification__content {
+    color: rgba(255, 255, 255, 0.8) !important;
+  }
+}
+
+.el-message {
+  background: #0f173a !important;
+  border: 1px solid rgba(79, 140, 255, 0.2) !important;
+
+  .el-message__content {
+    color: rgba(255, 255, 255, 0.9) !important;
+  }
+}
